@@ -42,6 +42,8 @@ export default function UsersPage() {
           <h3>Name</h3>
           <h3>Email</h3>
           <h3>Address</h3>
+          <h3>Allergies</h3>
+          <h3>Dietary Restrictions</h3>
           <h3>Admin</h3>
           <h3>Actions</h3>
         </div>
@@ -51,6 +53,12 @@ export default function UsersPage() {
               <span>{user.name}</span>
               <span>{user.email}</span>
               <span>{user.address}</span>
+              <span>
+                {user.allergies}
+              </span>
+              <span>
+                {user.dietaryRestrictions}
+              </span>
               <span>{user.isAdmin ? '✅' : '❌'}</span>
               <span className={classes.actions}>
                 <Link to={'/admin/editUser/' + user.id}>Edit</Link>

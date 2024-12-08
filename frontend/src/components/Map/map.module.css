@@ -24,7 +24,7 @@
   cursor: pointer;
   border-radius: 0 0 1rem 1rem;
   border: none;
-  border-top: 1px solid lightgrey;
+  border-top: 1px solid teal;
 }
 
 .find_location:hover {

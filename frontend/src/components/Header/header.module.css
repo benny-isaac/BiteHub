@@ -1,16 +1,17 @@
 .header {
-  background:lightgreen;
+  background:teal;
   padding: 0;
   border-bottom: 1px solid #e72929;
 }
 
 .header a {
-  color: #af1313;
+  color: white;
+  font-size: 25px;
 }
 
 .header a:hover {
   background: teal;
-  color: white;
+  color: red;
   cursor: pointer;
 }
 
@@ -43,7 +44,7 @@
 .menu {
   position: absolute;
   z-index: 1001;
-  background-color: whitesmoke;
+  background-color: teal;
   display: none;
 }
 

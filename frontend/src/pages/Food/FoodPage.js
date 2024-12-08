@@ -10,38 +10,48 @@ import NotFound from '../../components/NotFound/NotFound';
 
 export default function FoodPage() {
   const [food, setFood] = useState({});
-  const [customization, setCustomization] = useState({});
   const { id } = useParams();
   const { addToCart } = useCart();
   const navigate = useNavigate();
+  const [customizations, setCustomizations] = useState({});
 
-  // Handle adding food with customization to cart
   const handleAddToCart = () => {
-    const foodWithCustomization = { ...food, customization };
+    // Add customization options to the food item if any
+    const foodWithCustomization = { ...food, customizations };
     addToCart(foodWithCustomization);
     navigate('/cart');
   };
 
-  // Handle changes in customization options
-  const handleCustomizationChange = (key, value) => {
-    setCustomization(prev => ({ ...prev, [key]: value }));
+  const handleCustomizationChange = (e, field, value) => {
+    setCustomizations(prevState => ({
+      ...prevState,
+      [field]: value,
+    }));
   };
 
-  // Fetch food item and initialize customization
   useEffect(() => {
-    getById(id).then(data => {
-      setFood(data);
-
-      // Initialize customization state specific to the meal
-      if (data.customization) {
-        const defaultCustomization = {};
-        Object.keys(data.customization).forEach(key => {
-          defaultCustomization[key] = false; // Default to unchecked
-        });
-        setCustomization(defaultCustomization);
-      }
-    });
+    getById(id).then(setFood);
   }, [id]);
+
+  // Function to render customization options dynamically
+  const renderCustomizationOptions = (field, options) => {
+    if (options && options.length > 0) {
+      return options.map(option => (
+        <div key={option} className={classes.customizationOption}>
+          <label>
+            <input
+              type="checkbox"
+              name={field}
+              value={option}
+              onChange={e => handleCustomizationChange(e, field, option)}
+            />
+            {option}
+          </label>
+        </div>
+      ));
+    }
+    return null;
+  };
 
   return (
     <>
@@ -49,15 +59,13 @@ export default function FoodPage() {
         <NotFound message="Food Not Found!" linkText="Back To Homepage" />
       ) : (
         <div className={classes.container}>
-          {/* Food Image */}
           <img
             className={classes.image}
-            src={`${food.imageUrl}`}
+            src={`/foods/${food.imageUrl}`}
             alt={food.name}
           />
-
+          
           <div className={classes.details}>
-            {/* Food Header */}
             <div className={classes.header}>
               <span className={classes.name}>{food.name}</span>
               <span
@@ -69,19 +77,16 @@ export default function FoodPage() {
               </span>
             </div>
 
-            {/* Star Rating */}
             <div className={classes.rating}>
               <StarRating stars={food.stars} size={25} />
             </div>
 
-            {/* Origins */}
             <div className={classes.origins}>
               {food.origins?.map(origin => (
                 <span key={origin}>{origin}</span>
               ))}
             </div>
 
-            {/* Tags */}
             <div className={classes.tags}>
               {food.tags && (
                 <Tags
@@ -91,19 +96,17 @@ export default function FoodPage() {
               )}
             </div>
 
-            {/* Cook Time */}
             <div className={classes.cook_time}>
               <span>
                 Time to cook about <strong>{food.cookTime}</strong> minutes
               </span>
             </div>
 
-            {/* Price */}
             <div className={classes.price}>
               <Price price={food.price} />
             </div>
 
-            {/* Nutritional Information */}
+            {/* Nutritional Information Section */}
             {food.nutrition && (
               <div className={classes.nutrition}>
                 <h3>Nutritional Information:</h3>
@@ -116,7 +119,7 @@ export default function FoodPage() {
               </div>
             )}
 
-            {/* Dietary Notes */}
+            {/* Dietary Notes Section */}
             {food.dietaryNotes && (
               <div className={classes.dietary_notes}>
                 <h3>Dietary Notes:</h3>
@@ -124,7 +127,7 @@ export default function FoodPage() {
               </div>
             )}
 
-            {/* Allergens */}
+            {/* Allergens Section */}
             {food.allergens && food.allergens.length > 0 && (
               <div className={classes.allergens}>
                 <h3>Allergens:</h3>
@@ -137,26 +140,18 @@ export default function FoodPage() {
             )}
 
             {/* Customization Section */}
-            {food.customization && (
-              <div className={classes.customization}>
+            {food.customization && Object.keys(food.customization).length > 0 && (
+              <div className={classes.customizations}>
                 <h3>Customization Options:</h3>
-                {Object.keys(food.customization).map(key => (
-                  <div key={key} className={classes.customizationOption}>
-                    <label htmlFor={key}>
-                      <input
-                        type="checkbox"
-                        id={key}
-                        checked={customization[key]}
-                        onChange={e => handleCustomizationChange(key, e.target.checked)}
-                      />
-                      {key.replace(/([A-Z])/g, ' $1')} {/* Formats camelCase to readable text */}
-                    </label>
-                  </div>
-                ))}
+                {Object.keys(food.customization).map(field => {
+                  return renderCustomizationOptions(
+                    field,
+                    food.customization[field]
+                  );
+                })}
               </div>
             )}
 
-            {/* Add to Cart Button */}
             <button onClick={handleAddToCart}>Add To Cart</button>
           </div>
         </div>
