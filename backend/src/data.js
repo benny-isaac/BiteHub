@@ -188,8 +188,8 @@ export const sample_foods = [
       "dietaryNotes": "Contains fish. Not suitable for those with fish allergies.",
       "allergens": ["Fish"],
       "customization": {
-        "sauceLevel": ["Mild", "Medium", "Spicy"],
-        "substituteFish": ["Grilled Chicken", "Vegetarian Option"]
+        "sauceLevel": ["Extra banku(1 ball)", "Egg", "Extra pepper", "Black pepper", "Green pepper", "Mild", "Spicy"],
+        "substituteFish": ["Grilled fish", "Vegetarian Option"]
       }
     },
     {

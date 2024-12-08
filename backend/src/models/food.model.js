@@ -33,6 +33,8 @@ export const FoodSchema = new Schema(
       spiciness: { type: [String] },
       sideChoice: { type: [String] },
       substituteChicken: { type: [String] },
+      substituteFish: { type: [String]},
+      sauceLevel: {type: [String]},
       pastaType: { type: [String] },
       soySauceChoice: { type: [String] },
       beefCookStyle: { type: [String] },
