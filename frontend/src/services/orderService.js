@@ -33,3 +33,9 @@ export const getAllStatus = async () => {
   const { data } = await axios.get(`/api/orders/allstatus`);
   return data;
 };
+
+// Update food status to 'PICKEDUP'
+export const updateFoodStatus = async (orderId, status) => {
+  const response = await axios.patch(`/api/orders/${orderId}/foodStatus`, { status });
+  return response.data;
+};

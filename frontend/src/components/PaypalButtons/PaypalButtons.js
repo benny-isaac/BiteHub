@@ -1,36 +1,26 @@
-import {
-  PayPalButtons,
-  PayPalScriptProvider,
-  usePayPalScriptReducer,
-} from '@paypal/react-paypal-js';
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLoading } from '../../hooks/useLoading';
 import { pay } from '../../services/orderService';
 import { useCart } from '../../hooks/useCart';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import styles from './CustomPaymentForm.module.css';
 
-export default function PaypalButtons({ order }) {
-  return (
-    <PayPalScriptProvider
-      options={{
-        clientId:
-          'AUWcnaHjOUoXVI3IjLpMkM0Kk0Sigq1CUAWP-finHI950yQD2Qni8XPkRbs76Q-_JIT8hJFhKD8YVy3u',
-      }}
-    >
-      <Buttons order={order} />
-    </PayPalScriptProvider>
-  );
-}
-
-function Buttons({ order }) {
+export default function CustomPaymentForm({ order }) {
   const { clearCart } = useCart();
   const navigate = useNavigate();
-  const [{ isPending }] = usePayPalScriptReducer();
   const { showLoading, hideLoading } = useLoading();
-  useEffect(() => {
-    isPending ? showLoading() : hideLoading();
+  const [formData, setFormData] = useState({
+    cardNumber: '',
+    expiryDate: '',
+    cvv: '',
+    cardHolderName: '',
   });
+
+  // const [{ isPending }] = usePayPalScriptReducer();
+  // useEffect(() => {
+  //   isPending ? showLoading() : hideLoading();
+  // }, [isPending, showLoading, hideLoading]);
 
   const createOrder = (data, actions) => {
     return actions.order.create({
@@ -50,22 +40,93 @@ function Buttons({ order }) {
       const payment = await actions.order.capture();
       const orderId = await pay(payment.id);
       clearCart();
-      toast.success('Payment Saved Successfully', 'Success');
+      toast.success('Payment Successfully', 'Success');
       navigate('/track/' + orderId);
+      // navigate('/orders');
     } catch (error) {
-      toast.error('Payment Save Failed', 'Error');
+      toast.error('Payment Failed', 'Error');
     }
   };
 
-  const onError = err => {
+  const onError = (err) => {
     toast.error('Payment Failed', 'Error');
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    showLoading();
+
+    try {
+      // Simulate payment processing
+      const paymentData = {
+        ...formData,
+        amount: order.totalPrice,
+      };
+      await onApprove(paymentData, { order: { capture: () => paymentData } });
+    } catch (error) {
+      onError(error);
+    } finally {
+      hideLoading();
+    }
+  };
+
   return (
-    <PayPalButtons
-      createOrder={createOrder}
-      onApprove={onApprove}
-      onError={onError}
-    />
+    <form onSubmit={handleSubmit} className={styles.formContainer}>
+      <div className={styles.formGroup}>
+        <label className={styles.formLabel}>Card Number</label>
+        <input
+          type="text"
+          name="cardNumber"
+          value={formData.cardNumber}
+          onChange={handleChange}
+          className={styles.formInput}
+          required
+        />
+      </div>
+      <div className={styles.formGroup}>
+        <label className={styles.formLabel}>Expiry Date</label>
+        <input
+          type="text"
+          name="expiryDate"
+          value={formData.expiryDate}
+          onChange={handleChange}
+          className={styles.formInput}
+          required
+        />
+      </div>
+      <div className={styles.formGroup}>
+        <label className={styles.formLabel}>CVV</label>
+        <input
+          type="text"
+          name="cvv"
+          value={formData.cvv}
+          onChange={handleChange}
+          className={styles.formInput}
+          required
+        />
+      </div>
+      <div className={styles.formGroup}>
+        <label className={styles.formLabel}>Card Holder Name</label>
+        <input
+          type="text"
+          name="cardHolderName"
+          value={formData.cardHolderName}
+          onChange={handleChange}
+          className={styles.formInput}
+          required
+        />
+      </div>
+      <button type="submit" className={styles.submitButton}>
+        Pay Now
+      </button>
+    </form>
   );
 }

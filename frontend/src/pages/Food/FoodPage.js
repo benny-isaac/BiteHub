@@ -14,38 +14,77 @@ export default function FoodPage() {
   const { addToCart } = useCart();
   const navigate = useNavigate();
   const [customizations, setCustomizations] = useState({});
+  const [customizedPrice, setCustomizedPrice] = useState(0);
+
+  useEffect(() => {
+    // Fetch food data and initialize customization state
+    getById(id)
+      .then(data => {
+        setFood(data);
+        setCustomizedPrice(data.price || 0);
+
+        // Check if customizations exist in localStorage
+        const savedCustomizations = JSON.parse(localStorage.getItem(`food_${id}_customizations`)) || {};
+        const savedPrice = JSON.parse(localStorage.getItem(`food_${id}_price`)) || data.price || 0;
+
+        setCustomizations(savedCustomizations);
+        setCustomizedPrice(savedPrice);
+      })
+      .catch(error => {
+        console.error('Error fetching food data:', error);
+      });
+  }, [id]);
 
   const handleAddToCart = () => {
-    // Add customization options to the food item if any
-    const foodWithCustomization = { ...food, customizations };
+    const foodWithCustomization = { ...food, customizations, price: customizedPrice };
     addToCart(foodWithCustomization);
+
+    // Save customizations and price in localStorage
+    localStorage.setItem(`food_${id}_customizations`, JSON.stringify(customizations));
+    localStorage.setItem(`food_${id}_price`, JSON.stringify(customizedPrice));
+
     navigate('/cart');
   };
 
-  const handleCustomizationChange = (e, field, value) => {
-    setCustomizations(prevState => ({
-      ...prevState,
-      [field]: value,
-    }));
+  const handleCustomizationChange = (e, field, option, price) => {
+    const isChecked = e.target.checked;
+
+    setCustomizations(prevState => {
+      const updatedCustomizations = {
+        ...prevState,
+        [field]: isChecked
+          ? [...(prevState[field] || []), option]
+          : prevState[field]?.filter(item => item !== option),
+      };
+
+      // Save updated customizations to localStorage
+      localStorage.setItem(`food_${id}_customizations`, JSON.stringify(updatedCustomizations));
+      return updatedCustomizations;
+    });
+
+    const priceChange = isChecked ? price : -price;
+    setCustomizedPrice(prevPrice => {
+      const updatedPrice = prevPrice + priceChange;
+
+      // Save updated price to localStorage
+      localStorage.setItem(`food_${id}_price`, JSON.stringify(updatedPrice));
+      return updatedPrice;
+    });
   };
 
-  useEffect(() => {
-    getById(id).then(setFood);
-  }, [id]);
-
-  // Function to render customization options dynamically
   const renderCustomizationOptions = (field, options) => {
     if (options && options.length > 0) {
-      return options.map(option => (
+      return options.map(({ option, price }) => (
         <div key={option} className={classes.customizationOption}>
           <label>
             <input
               type="checkbox"
               name={field}
               value={option}
-              onChange={e => handleCustomizationChange(e, field, option)}
+              onChange={e => handleCustomizationChange(e, field, option, price)}
+              checked={customizations[field]?.includes(option) || false} // Restore checkbox state
             />
-            {option}
+            {option} (${price.toFixed(2)})
           </label>
         </div>
       ));
@@ -64,7 +103,7 @@ export default function FoodPage() {
             src={`/foods/${food.imageUrl}`}
             alt={food.name}
           />
-          
+
           <div className={classes.details}>
             <div className={classes.header}>
               <span className={classes.name}>{food.name}</span>
@@ -103,10 +142,10 @@ export default function FoodPage() {
             </div>
 
             <div className={classes.price}>
-              <Price price={food.price} />
+              <Price price={customizedPrice} />
             </div>
 
-            {/* Nutritional Information Section */}
+            {/* Nutritional Information */}
             {food.nutrition && (
               <div className={classes.nutrition}>
                 <h3>Nutritional Information:</h3>
@@ -119,7 +158,7 @@ export default function FoodPage() {
               </div>
             )}
 
-            {/* Dietary Notes Section */}
+            {/* Dietary Notes */}
             {food.dietaryNotes && (
               <div className={classes.dietary_notes}>
                 <h3>Dietary Notes:</h3>
@@ -127,7 +166,7 @@ export default function FoodPage() {
               </div>
             )}
 
-            {/* Allergens Section */}
+            {/* Allergens */}
             {food.allergens && food.allergens.length > 0 && (
               <div className={classes.allergens}>
                 <h3>Allergens:</h3>
@@ -143,12 +182,9 @@ export default function FoodPage() {
             {food.customization && Object.keys(food.customization).length > 0 && (
               <div className={classes.customizations}>
                 <h3>Customization Options:</h3>
-                {Object.keys(food.customization).map(field => {
-                  return renderCustomizationOptions(
-                    field,
-                    food.customization[field]
-                  );
-                })}
+                {Object.keys(food.customization).map(field =>
+                  renderCustomizationOptions(field, food.customization[field])
+                )}
               </div>
             )}
 

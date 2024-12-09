@@ -5,3 +5,4 @@ export const OrderStatus = {
   CANCELED: 'CANCELED',
   REFUNDED: 'REFUNDED',
 };
+

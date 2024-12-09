@@ -19,10 +19,18 @@ export const sample_foods = [
       "dietaryNotes": "Contains eggs, gluten, and possibly dairy (if butter is used in preparation). Not suitable for vegans or gluten-intolerant individuals.",
       "allergens": ["Eggs", "Gluten", "Dairy"],
       "customization": {
-        "eggStyle": ["Scrambled", "Fried", "Poached"],
-        "toastType": ["White", "Whole Wheat", "Gluten-Free"],
-        "addSausages": true,
-        "addCheese": false
+        "eggStyle": [
+          { "option": "Scrambled", "price": 1 },
+          { "option": "Fried", "price": 2 },
+          { "option": "Poached", "price": 3 }
+        ],
+        "toastType": [
+          { "option": "White", "price": 2 },
+          { "option": "Whole Wheat", "price": 3 },
+          { "option": "Gluten-Free", "price": 1 }
+        ],
+        "addSausages": { "available": true, "price": 2 },
+        "addCheese": { "available": false, "price": 1 }
       }
     },
     {
@@ -44,9 +52,25 @@ export const sample_foods = [
       "dietaryNotes": "Suitable for vegans and dairy-free diets.",
       "allergens": ["Oats"],
       "customization": {
-        "fruitChoice": ["Bananas", "Strawberries", "Blueberries", "Mixed Berries"],
-        "sweetener": ["Honey", "Agave", "Maple Syrup", "None"],
-        "milkOption": ["Almond Milk", "Soy Milk", "Oat Milk", "Coconut Milk", "Cow's Milk"]
+        "fruitChoice": [
+          { "option": "Bananas", "price": 1 },
+          { "option": "Strawberries", "price": 1 },
+          { "option": "Blueberries", "price": 2 },
+          { "option": "Mixed Berries", "price": 1 }
+        ],
+        "sweetener": [
+          { "option": "Honey", "price": 2 },
+          { "option": "Agave", "price": 1 },
+          { "option": "Maple Syrup", "price": 1 },
+          { "option": "None", "price": 0 }
+        ],
+        "milkOption": [
+          { "option": "Almond Milk", "price": 1 },
+          { "option": "Soy Milk", "price": 1 },
+          { "option": "Oat Milk", "price": 1 },
+          { "option": "Coconut Milk", "price": 1 },
+          { "option": "Cow's Milk", "price": 1 }
+        ]
       }
     },
     {
@@ -68,11 +92,22 @@ export const sample_foods = [
       "dietaryNotes": "Contains gluten and dairy. Not suitable for those on a gluten-free or dairy-free diet.",
       "allergens": ["Gluten", "Dairy"],
       "customization": {
-        "syrupType": ["Maple Syrup", "Strawberry Syrup", "Chocolate Syrup", "Honey"],
-        "yogurtChoice": ["Plain", "Greek", "Vanilla", "Strawberry"],
-        "addFruit": true
+        "syrupType": [
+          { "option": "Maple Syrup", "price": 1 },
+          { "option": "Strawberry Syrup", "price": 1 },
+          { "option": "Chocolate Syrup", "price": 1 },
+          { "option": "Honey", "price": 1 }
+        ],
+        "yogurtChoice": [
+          { "option": "Plain", "price": 1 },
+          { "option": "Greek", "price": 1 },
+          { "option": "Vanilla", "price": 1 },
+          { "option": "Strawberry", "price": 1 }
+        ],
+        "addFruit": { "available": true, "price": 1 }
       }
     },
+    
     {
       "id": "4",
       "name": "French Toast with beverage",
@@ -92,9 +127,18 @@ export const sample_foods = [
       "dietaryNotes": "Contains eggs and dairy. Not suitable for vegans.",
       "allergens": ["Eggs", "Dairy", "Gluten"],
       "customization": {
-        "beverageChoice": ["Coffee", "Tea", "Orange Juice", "Milk"],
-        "toastType": ["White", "Whole Wheat", "Gluten-Free"],
-        "addFruit": false
+        "beverageChoice": [
+          { "option": "Coffee", "price": 2 },
+          { "option": "Tea", "price": 1.5 },
+          { "option": "Orange Juice", "price": 2 },
+          { "option": "Milk", "price": 1.5 }
+        ],
+        "toastType": [
+          { "option": "White", "price": 1 },
+          { "option": "Whole Wheat", "price": 1 },
+          { "option": "Gluten-Free", "price": 1 }
+        ],
+        "addFruit": { "available": false, "price": 1.5 }
       }
     },
     {
@@ -116,9 +160,20 @@ export const sample_foods = [
       "dietaryNotes": "Contains gluten (in the coleslaw). Can be made gluten-free with modification.",
       "allergens": ["Gluten"],
       "customization": {
-        "spiciness": ["Mild", "Medium", "Hot"],
-        "sideChoice": ["Salad", "French Fries", "Plantains"],
-        "substituteChicken": ["Grilled Beef", "Vegetarian Option"]
+        "spiciness": [
+          { "option": "Mild", "price": 1 },
+          { "option": "Medium", "price": 1 },
+          { "option": "Hot", "price": 1 }
+        ],
+        "sideChoice": [
+          { "option": "Salad", "price": 2 },
+          { "option": "French Fries", "price": 2.5 },
+          { "option": "Plantains", "price": 3 }
+        ],
+        "substituteChicken": [
+          { "option": "Grilled Beef", "price": 3 },
+          { "option": "Vegetarian Option", "price": 2 }
+        ]
       }
     },
     {
@@ -140,11 +195,20 @@ export const sample_foods = [
       "dietaryNotes": "Contains gluten (pasta). Not suitable for gluten-free diets.",
       "allergens": ["Gluten"],
       "customization": {
-        "pastaType": ["Spaghetti", "Penne", "Fusilli"],
-        "addCheese": true,
-        "spiciness": ["Mild", "Medium", "Hot"]
+        "pastaType": [
+          { "option": "Spaghetti", "price": 1 },
+          { "option": "Penne", "price": 1 },
+          { "option": "Fusilli", "price": 1 }
+        ],
+        "addCheese": { "available": true, "price": 1 },
+        "spiciness": [
+          { "option": "Mild", "price": 1 },
+          { "option": "Medium", "price": 1 },
+          { "option": "Hot", "price": 1 }
+        ]
       }
     },
+    
     {
       "id": "7",
       "name": "Vegetable fried rice with beef stir-fry",
@@ -164,9 +228,16 @@ export const sample_foods = [
       "dietaryNotes": "Contains soy sauce (soy). Can be made soy-free with modifications.",
       "allergens": ["Soy"],
       "customization": {
-        "soySauceChoice": ["Soy Sauce", "Tamari (Gluten-Free)"],
-        "beefCookStyle": ["Stir-Fried", "Grilled", "Steamed"],
-        "addVeggies": true
+        "soySauceChoice": [
+          { "option": "Soy Sauce", "price": 1 },
+          { "option": "Tamari (Gluten-Free)", "price": 1 }
+        ],
+        "beefCookStyle": [
+          { "option": "Stir-Fried", "price": 1 },
+          { "option": "Grilled", "price": 1 },
+          { "option": "Steamed", "price": 1 }
+        ],
+        "addVeggies": { "available": true, "price": 1.5 }
       }
     },
     {
@@ -188,8 +259,19 @@ export const sample_foods = [
       "dietaryNotes": "Contains fish. Not suitable for those with fish allergies.",
       "allergens": ["Fish"],
       "customization": {
-        "sauceLevel": ["Extra banku(1 ball)", "Egg", "Extra pepper", "Black pepper", "Green pepper", "Mild", "Spicy"],
-        "substituteFish": ["Grilled fish", "Vegetarian Option"]
+        "sauceLevel": [
+          { "option": "Extra Banku (1 ball)", "price": 2 },
+          { "option": "Egg", "price": 1.5 },
+          { "option": "Extra Pepper", "price": 1 },
+          { "option": "Black Pepper", "price": 1 },
+          { "option": "Green Pepper", "price": 1 },
+          { "option": "Mild", "price": 1 },
+          { "option": "Spicy", "price": 1 }
+        ],
+        "substituteFish": [
+          { "option": "Grilled Fish", "price": 2 },
+          { "option": "Vegetarian Option", "price": 1.5 }
+        ]
       }
     },
     {
@@ -211,10 +293,19 @@ export const sample_foods = [
       "dietaryNotes": "Contains gluten (from the fufu). Suitable for most diets except gluten-free.",
       "allergens": ["Gluten"],
       "customization": {
-        "soupSpiceLevel": ["Mild", "Medium", "Hot"],
-        "addMeat": ["Chicken", "Beef", "None"]
+        "soupSpiceLevel": [
+          { "option": "Mild", "price": 1 },
+          { "option": "Medium", "price": 1 },
+          { "option": "Hot", "price": 1 }
+        ],
+        "addMeat": [
+          { "option": "Chicken", "price": 2 },
+          { "option": "Beef", "price": 2.5 },
+          { "option": "None", "price": 0 }
+        ]
       }
     },
+    
     {
       "id": "10",
       "name": "Kenkey with fried fish and hot pepper sauce",
@@ -234,8 +325,16 @@ export const sample_foods = [
       "dietaryNotes": "Contains gluten. Not suitable for those with gluten intolerance.",
       "allergens": ["Fish", "Gluten"],
       "customization": {
-        "fishType": ["Tilapia", "Mackerel", "Grilled Chicken"],
-        "spiceLevel": ["Mild", "Medium", "Hot"]
+        "fishType": [
+          { "option": "Tilapia", "price": 1 },
+          { "option": "Mackerel", "price": 1 },
+          { "option": "Grilled Chicken", "price": 2 }
+        ],
+        "spiceLevel": [
+          { "option": "Mild", "price": 1 },
+          { "option": "Medium", "price": 1 },
+          { "option": "Hot", "price": 1 }
+        ]
       }
     },
     {
@@ -257,8 +356,16 @@ export const sample_foods = [
       "dietaryNotes": "Contains beef and spices. Not suitable for vegetarians.",
       "allergens": ["Beef", "Spices"],
       "customization": {
-        "spiceLevel": ["Mild", "Medium", "Hot"],
-        "sideChoice": ["Plantains", "Rice", "Fried Yam"]
+        "spiceLevel": [
+          { "option": "Mild", "price": 1 },
+          { "option": "Medium", "price": 1 },
+          { "option": "Hot", "price": 1 }
+        ],
+        "sideChoice": [
+          { "option": "Plantains", "price": 2 },
+          { "option": "Rice", "price": 1.5 },
+          { "option": "Fried Yam", "price": 2.5 }
+        ]
       }
     },
     {
@@ -280,10 +387,19 @@ export const sample_foods = [
       "dietaryNotes": "Contains gluten (from the yam flour). Not suitable for gluten-free diets.",
       "allergens": ["Gluten"],
       "customization": {
-        "soupType": ["Egusi", "Okra", "Vegetable"],
-        "meatOption": ["Goat Meat", "Beef", "Chicken"]
+        "soupType": [
+          { "option": "Egusi", "price": 1 },
+          { "option": "Okra", "price": 1 },
+          { "option": "Vegetable", "price": 1.5 }
+        ],
+        "meatOption": [
+          { "option": "Goat Meat", "price": 2 },
+          { "option": "Beef", "price": 1.5 },
+          { "option": "Chicken", "price": 1 }
+        ]
       }
     },
+    
     {
       "id": "13",
       "name": "Rice and stew with fried chicken",
@@ -303,8 +419,14 @@ export const sample_foods = [
       "dietaryNotes": "Contains gluten. Can be made gluten-free with modifications.",
       "allergens": ["Gluten"],
       "customization": {
-        "sauceChoice": ["Tomato Stew", "Peanut Stew"],
-        "chickenType": ["Fried", "Grilled"]
+        "sauceChoice": [
+          { "option": "Tomato Stew", "price": 1 },
+          { "option": "Peanut Stew", "price": 1 }
+        ],
+        "chickenType": [
+          { "option": "Fried", "price": 1 },
+          { "option": "Grilled", "price": 1 }
+        ]
       }
     },
     {
@@ -326,8 +448,16 @@ export const sample_foods = [
       "dietaryNotes": "Contains gluten. Can be made gluten-free with modifications.",
       "allergens": ["Gluten"],
       "customization": {
-        "spiciness": ["Mild", "Medium", "Hot"],
-        "sideOption": ["Fried Plantains", "Salad", "French Fries"]
+        "spiciness": [
+          { "option": "Mild", "price": 1 },
+          { "option": "Medium", "price": 1 },
+          { "option": "Hot", "price": 1 }
+        ],
+        "sideOption": [
+          { "option": "Fried Plantains", "price": 2 },
+          { "option": "Salad", "price": 1.5 },
+          { "option": "French Fries", "price": 2 }
+        ]
       }
     },
     {
@@ -349,11 +479,25 @@ export const sample_foods = [
       "dietaryNotes": "Contains beef. Not suitable for vegetarians.",
       "allergens": ["Beef"],
       "customization": {
-        "steakDoneness": ["Rare", "Medium Rare", "Medium", "Well Done"],
-        "sideChoice": ["Mashed Potatoes", "French Fries", "Steamed Vegetables"],
-        "sauceChoice": ["Pepper Sauce", "Garlic Butter", "Mushroom Sauce"]
+        "steakDoneness": [
+          { "option": "Rare", "price": 1 },
+          { "option": "Medium Rare", "price": 1 },
+          { "option": "Medium", "price": 1 },
+          { "option": "Well Done", "price": 1 }
+        ],
+        "sideChoice": [
+          { "option": "Mashed Potatoes", "price": 1 },
+          { "option": "French Fries", "price": 1.5 },
+          { "option": "Steamed Vegetables", "price": 2 }
+        ],
+        "sauceChoice": [
+          { "option": "Pepper Sauce", "price": 1 },
+          { "option": "Garlic Butter", "price": 1.5 },
+          { "option": "Mushroom Sauce", "price": 2 }
+        ]
       }
     }
+    
   ]
   
   ]

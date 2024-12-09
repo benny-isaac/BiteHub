@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { trackOrderById } from '../../services/orderService';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { trackOrderById, updateFoodStatus } from '../../services/orderService'; // Make sure to import the update function
 import NotFound from '../../components/NotFound/NotFound';
 import classes from './orderTrackPage.module.css';
 import DateTime from '../../components/DateTime/DateTime';
@@ -11,16 +11,30 @@ import Map from '../../components/Map/Map';
 export default function OrderTrackPage() {
   const { orderId } = useParams();
   const [order, setOrder] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    orderId &&
+    if (orderId) {
       trackOrderById(orderId).then(order => {
-        setOrder(order);
+        setOrder(order); // Set order details
+      }).catch(() => {
+        navigate('/orders'); // Redirect if order is not found
       });
-  }, []);
+    }
+  }, [orderId, navigate]);
 
-  if (!orderId)
+  const handleFoodStatusUpdate = async () => {
+    try {
+      const updatedOrder = await updateFoodStatus(order.id, 'PICKED UP');
+      setOrder(updatedOrder); // Update local state with the new foodStatus
+    } catch (error) {
+      console.error('Failed to update food status', error);
+    }
+  };
+
+  if (!orderId) {
     return <NotFound message="Order Not Found" linkText="Go To Home Page" />;
+  }
 
   return (
     order && (
@@ -44,6 +58,17 @@ export default function OrderTrackPage() {
               <strong>State</strong>
               {order.status}
             </div>
+            <div>
+              <strong>Food Status</strong>
+              <span className={classes.status}>{order.foodStatus}</span> {/* Display food status */}
+            </div>
+            {/* Display button to update food status only if foodStatus is 'READY FOR PICKUP' */}
+            {order.foodStatus === 'READY FOR PICKUP' && (
+              <div className={classes.foodStatusButton}>
+                <button onClick={handleFoodStatusUpdate}>Mark as Picked Up</button>
+              </div>
+            )}
+
             {order.paymentId && (
               <div>
                 <strong>Payment ID</strong>
