@@ -10,8 +10,8 @@ This platform caters to students and staff, providing a convenient and efficient
 Render link here
 
 # Login Details
-###Email: testuser@gmail.com
-###Password: password123
+### Email: testuser@gmail.com
+### Password: password123
 
 ## Features
 
