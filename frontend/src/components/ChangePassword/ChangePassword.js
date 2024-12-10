@@ -20,11 +20,11 @@ export default function ChangePassword() {
 
   return (
     <div>
-      <Title title="Change Password" />
+      <Title title="Update Password" />
       <form onSubmit={handleSubmit(submit)}>
         <Input
           type="password"
-          label="Current Password"
+          label="Old Password"
           {...register('currentPassword', {
             required: true,
           })}
@@ -54,7 +54,7 @@ export default function ChangePassword() {
           error={errors.confirmNewPassword}
         />
 
-        <Button type="submit" text="Change" />
+        <Button type="submit" text="Update" />
       </form>
     </div>
   );

@@ -9,6 +9,7 @@ export const UserSchema = new Schema(
     allergies: { type: String, required: false},
     dietaryRestrictions: { type: String, required: false},
     isAdmin: { type: Boolean, default: false },
+    points: { type: Number, default: 0 },
     isBlocked: { type: Boolean, default: false },
   },
   {

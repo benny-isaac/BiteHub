@@ -107,18 +107,18 @@ export default function FoodPage() {
           <div className={classes.details}>
             <div className={classes.header}>
               <span className={classes.name}>{food.name}</span>
-              <span
+              {/* <span
                 className={`${classes.favorite} ${
                   food.favorite ? '' : classes.not
                 }`}
               >
                 ❤
-              </span>
+              </span> */}
             </div>
 
-            <div className={classes.rating}>
+            {/* <div className={classes.rating}>
               <StarRating stars={food.stars} size={25} />
-            </div>
+            </div> */}
 
             <div className={classes.origins}>
               {food.origins?.map(origin => (

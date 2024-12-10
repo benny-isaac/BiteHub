@@ -1,80 +1,95 @@
-.list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 0;
-  list-style: none;
+.container {
+  width: 90%; /* Adjust to 80% or 90% as needed */
+  max-width: 1200px; /* Optional: Set a max width for larger screens */
+  margin: 0 auto; /* Center the content horizontally */
+  background-color: #ddd;
 }
 
-.list li {
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listItem {
   display: flex;
-  flex-direction: column;
-  width: calc(33.333% - 1rem); /* Adjust based on desired thumbnail size */
+  flex-direction: row;
   border: 1px solid #ddd;
   border-radius: 5px;
   overflow: hidden;
-  text-align: center;
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.listItem:hover {
+  transform: translateY(-3px);
+}
+
+.link {
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
 }
 
 .image {
-  width: 100%;
-  height: 15.5rem ; /* Set a consistent height for images */
+  width: 40%;
+  height: 100%;
   object-fit: cover;
 }
 
 .content {
+  width: 60%;
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  min-height: 140px; /* Ensure enough space for content */
-  justify-content: space-between; /* Distribute items evenly */
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .name {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
+  color: #333;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100%; /* Ensure the name stays within the container */
 }
 
 .favorite {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: red;
   cursor: pointer;
 }
 
 .stars {
-  margin: 0.5rem 0;
-}
-
-.product_item_footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.9rem;
-  color: #555;
-  margin-top: auto; /* Push footer to the bottom */
+  margin-top: 0.5rem;
 }
 
 .origins span {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: #777;
+  margin-right: 0.5rem;
 }
 
-.cook_time {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  white-space: nowrap; /* Prevent wrapping */
-  overflow: hidden;
-  text-overflow: ellipsis;
+.cookTime {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.5rem;
 }
 
 .price {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
-  color: #333;
+  color: #2e7d32;
+  margin-top: 1rem;
 }

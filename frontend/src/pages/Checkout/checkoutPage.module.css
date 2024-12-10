@@ -1,32 +1,130 @@
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9; /* Light background for the entire page */
+  color: #333;
+}
+
 .container {
-  margin-top: 1rem;
+  margin-top: 2rem;
   display: flex;
-  margin: 0 0 6rem 2rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px; /* Centering and limiting the width */
+  padding: 0 1rem;
 }
 
 .content {
-  width: 35rem;
-  margin: 0 3rem 0 0;
+  width: 100%;
+  background-color: #ffffff; /* White background for the form container */
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow around the container */
+  margin-bottom: 2rem;
 }
 
-.content,
 .inputs {
   display: flex;
   flex-direction: column;
+  gap: 1.5rem; /* Space between inputs */
 }
 
-.inputs {
-  width: 100%;
+.inputs input {
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.inputs input:focus {
+  border-color: #1abc9c; /* Elegant focus color */
+}
+
+.inputs label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 
 .buttons_container {
-  flex-basis: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 3rem;
 }
+
 .buttons {
-  margin: 2rem;
-  width: 35rem;
+  width: 100%;
+  max-width: 35rem; /* Limit button width */
+}
+
+button {
+  background-color: #1abc9c; /* Elegant teal color */
+  color: #fff;
+  padding: 1rem;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  width: 100%;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #16a085; /* Darker shade on hover */
+}
+
+/* Map Container */
+.Title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Styling the Order Items List */
+.orderItems {
+  margin-bottom: 2rem;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.orderItems h3 {
+  font-size: 1.3rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.orderItems ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.orderItems li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.orderItems li:last-child {
+  border-bottom: none;
+}
+
+.orderItems .item-price {
+  font-weight: bold;
+  color: #1abc9c;
+}
+
+.orderItems .item-name {
+  color: #333;
 }

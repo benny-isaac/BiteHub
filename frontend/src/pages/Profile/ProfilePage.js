@@ -16,22 +16,22 @@ export default function ProfilePage() {
 
   const { user, updateProfile } = useAuth();
 
-  const submit = user => {
-    updateProfile(user);
+  const submit = (data) => {
+    updateProfile(data);
   };
 
   return (
     <div className={classes.container}>
       <div className={classes.details}>
-        <Title title="Update Profile" />
-        <form onSubmit={handleSubmit(submit)}>
+        <Title title="Update Your Profile" />
+        <form onSubmit={handleSubmit(submit)} className={classes.form}>
           <Input
             defaultValue={user.name}
             type="text"
-            label="Name"
+            label="Full Name"
             {...register('name', {
-              required: true,
-              minLength: 5,
+              required: 'Name is required',
+              minLength: { value: 5, message: 'Name must be at least 5 characters' },
             })}
             error={errors.name}
           />
@@ -40,16 +40,18 @@ export default function ProfilePage() {
             type="text"
             label="Address"
             {...register('address', {
-              required: true,
-              minLength: 10,
+              required: 'Address is required',
+              minLength: { value: 10, message: 'Address must be at least 10 characters' },
             })}
             error={errors.address}
           />
 
-          <Button type="submit" text="Update" backgroundColor="#009e84" />
+          <Button type="submit" text="Update Profile" backgroundColor="#4CAF50" />
         </form>
 
-        <ChangePassword />
+        <div className={classes.passwordChange}>
+          <ChangePassword />
+        </div>
       </div>
     </div>
   );

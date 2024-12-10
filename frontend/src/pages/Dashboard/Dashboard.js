@@ -15,13 +15,16 @@ export default function Dashboard() {
             <Link
               key={item.title}
               to={item.url}
+              className={classes.menuItem}
               style={{
                 backgroundColor: item.bgColor,
                 color: item.color,
               }}
             >
-              <img src={item.imageUrl} alt={item.title} />
-              <h2>{item.title}</h2>
+              <div className={classes.iconContainer}>
+                <img src={item.imageUrl} alt={item.title} />
+              </div>
+              <h2 className={classes.itemTitle}>{item.title}</h2>
             </Link>
           ))}
       </div>
@@ -34,30 +37,30 @@ const allItems = [
     title: 'Orders',
     imageUrl: '/icons/orders.svg',
     url: '/orders',
-    bgColor: '#ec407a',
-    color: 'white',
+    bgColor: '',
+    color: 'teal',
   },
   {
     title: 'Profile',
     imageUrl: '/icons/profile.svg',
     url: '/profile',
-    bgColor: '#1565c0',
-    color: 'white',
+    bgColor: '',
+    color: 'teal',
   },
   {
     title: 'Users',
     imageUrl: '/icons/users.svg',
     url: '/admin/users',
     forAdmin: true,
-    bgColor: '#00bfa5',
-    color: 'white',
+    bgColor: '',
+    color: 'teal',
   },
   {
     title: 'Foods',
     imageUrl: '/icons/foods.svg',
     url: '/admin/foods',
     forAdmin: true,
-    bgColor: '#e040fb',
-    color: 'white',
+    bgColor: '',
+    color: 'teal',
   },
 ];

@@ -40,7 +40,7 @@ export default function CustomPaymentForm({ order }) {
       const payment = await actions.order.capture();
       const orderId = await pay(payment.id);
       clearCart();
-      toast.success('Payment Successfully', 'Success');
+      toast.success('Payment Successful', 'Success');
       navigate('/track/' + orderId);
       // navigate('/orders');
     } catch (error) {

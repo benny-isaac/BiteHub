@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { getAll, getAllStatus } from '../../services/orderService';
 import classes from './ordersPage.module.css';
 import Title from '../../components/Title/Title';
@@ -22,8 +22,8 @@ const reducer = (state, action) => {
 
 export default function OrdersPage() {
   const [{ allStatus, orders }, dispatch] = useReducer(reducer, initialState);
-
   const { filter } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getAllStatus().then(status => {
@@ -34,24 +34,25 @@ export default function OrdersPage() {
     });
   }, [filter]);
 
+  const handleStatusChange = (e) => {
+    const selectedStatus = e.target.value;
+    navigate(`/orders/${selectedStatus}`);
+  };
+
   return (
     <div className={classes.container}>
       <Title title="Orders" margin="1.5rem 0 0 .2rem" fontSize="1.9rem" />
 
       {allStatus && (
-        <div className={classes.all_status}>
-          <Link to="/orders" className={!filter ? classes.selected : ''}>
-            All
-          </Link>
-          {allStatus.map(state => (
-            <Link
-              key={state}
-              className={state == filter ? classes.selected : ''}
-              to={`/orders/${state}`}
-            >
-              {state}
-            </Link>
-          ))}
+        <div className={classes.status_dropdown}>
+          <select value={filter || ''} onChange={handleStatusChange}>
+            <option value="">All</option>
+            {allStatus.map(state => (
+              <option key={state} value={state}>
+                {state}
+              </option>
+            ))}
+          </select>
         </div>
       )}
 

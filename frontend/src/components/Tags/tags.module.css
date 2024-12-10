@@ -1,13 +1,56 @@
 .container {
-  display: flex;
-  flex-wrap: wrap;
+  width: 90%; /* Adjust to 80% or 90% as needed */
+  max-width: 1200px; /* Optional: Limit the width */
+  margin: 0 auto; /* Center the container */
+  text-align: center; /* Center text and inline elements */
 }
 
-.container a {
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin: 1rem 0; /* Add some spacing above and below */
+}
+
+.dropdownButton {
   background-color: #f0f0f0;
-  padding: 0.3rem 1rem;
-  margin: 0.2rem 0.15rem;
-  border-radius: 10rem;
-  font-weight: 600;
-  color: green;
+  border: none;
+  border-radius: 5px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdownButton:hover {
+  background-color: #e0e0e0;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 0.5rem 0;
+  z-index: 1;
+  min-width: 200px; /* Optional: Set a minimum width for consistency */
+  text-align: left; /* Align dropdown items to the left */
+}
+
+.dropdownContent.show {
+  display: block;
+}
+
+.dropdownItem {
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+.dropdownItem:hover {
+  background-color: #f5f5f5;
 }

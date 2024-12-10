@@ -1,37 +1,102 @@
 .container {
   display: flex;
   justify-content: center;
-  align-items: center; /* Center vertically */
-  font-size: 1.2rem;
+  align-items: flex-start; /* Align to top for a more structured layout */
+  font-size: 1rem; /* Reduced font size for better fitting */
+  padding: 2rem;
+  background-color: #f4f7fa;
 }
 
 .list {
   width: 100%;
-  max-width: 70rem; /* Adjusted to make space for all columns */
-  padding: 1rem; /* Add padding for a polished look */
+  max-width: 80rem;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-x: hidden; /* Ensures no horizontal scroll */
 }
-.list_item {
+
+.tableHeader {
   display: grid;
-  grid-template-columns: 15% 25% 15% 15% 15% 10% 15%; /* Adjusted to accommodate columns */
-  gap: 1%;
-  align-items: center;
+  grid-template-columns: 22% 22% 18% 14% 14% 8% 18%; /* Reduced column width */
+  gap: 1rem;
+  padding: 0.8rem 0;
+  font-weight: bold;
   border-bottom: 1px solid #eaeaea; /* Softer horizontal rule */
-  min-height: 3rem;
+  text-align: left;
+  font-size: 0.9rem; /* Reduced font size */
 }
 
-.list_item:last-child {
-  border-bottom: none; /* Remove the last horizontal rule */
+.tableRow {
+  display: grid;
+  grid-template-columns: 22% 22% 18% 14% 14% 8% 18%; /* Reduced column width */
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.9rem; /* Reduced font size */
 }
 
-.list_item > * {
+.tableRow:hover {
+  background-color: #f9f9f9;
+}
+
+.tableRow > * {
   word-wrap: break-word;
 }
 
-h3 {
-  margin: 0;
+.tableRow .actions {
+  display: flex;
+  gap: 1rem;
 }
 
-.actions {
-  display: flex;
-  gap: 0.7rem;
+.tableRow .actions a {
+  padding: 0.4rem 0.8rem; /* Smaller padding */
+  font-size: 0.85rem; /* Slightly smaller font size for action buttons */
+  border-radius: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.editBtn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.editBtn:hover {
+  background-color: #45a049;
+}
+
+.blockBtn {
+  background-color: #f44336;
+  color: white;
+}
+
+.blockBtn:hover {
+  background-color: #e53935;
+}
+
+.unblockBtn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.unblockBtn:hover {
+  background-color: #388e3c;
+}
+
+.admin {
+  color: green;
+}
+
+.notAdmin {
+  color: red;
+  font-size: 28px;
+}
+
+.noUsers {
+  font-size: 1rem; /* Adjusted font size */
+  color: #777;
+  text-align: center;
+  margin-top: 2rem;
 }

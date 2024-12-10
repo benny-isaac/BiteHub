@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { trackOrderById, updateFoodStatus } from '../../services/orderService'; // Make sure to import the update function
+import { trackOrderById, updateFoodStatus } from '../../services/orderService';
 import NotFound from '../../components/NotFound/NotFound';
 import classes from './orderTrackPage.module.css';
 import DateTime from '../../components/DateTime/DateTime';
@@ -16,9 +16,9 @@ export default function OrderTrackPage() {
   useEffect(() => {
     if (orderId) {
       trackOrderById(orderId).then(order => {
-        setOrder(order); // Set order details
+        setOrder(order);
       }).catch(() => {
-        navigate('/orders'); // Redirect if order is not found
+        navigate('/orders');
       });
     }
   }, [orderId, navigate]);
@@ -26,7 +26,7 @@ export default function OrderTrackPage() {
   const handleFoodStatusUpdate = async () => {
     try {
       const updatedOrder = await updateFoodStatus(order.id, 'PICKED UP');
-      setOrder(updatedOrder); // Update local state with the new foodStatus
+      setOrder(updatedOrder);
     } catch (error) {
       console.error('Failed to update food status', error);
     }
@@ -40,29 +40,32 @@ export default function OrderTrackPage() {
     order && (
       <div className={classes.container}>
         <div className={classes.content}>
-          <h1>Order #{order.id}</h1>
+          <Title title={`Order #${order.id}`} fontSize="2rem" margin="1rem 0" />
+
           <div className={classes.header}>
-            <div>
+            <div className={classes.info}>
               <strong>Date</strong>
               <DateTime date={order.createdAt} />
             </div>
-            <div>
+            <div className={classes.info}>
               <strong>Name</strong>
               {order.name}
             </div>
-            <div>
+            <div className={classes.info}>
               <strong>Address</strong>
               {order.address}
             </div>
-            <div>
+            <div className={classes.info}>
               <strong>State</strong>
-              {order.status}
+              <span className={classes.status}>{order.status}</span>
             </div>
-            <div>
+            <div className={classes.info}>
               <strong>Food Status</strong>
-              <span className={classes.status}>{order.foodStatus}</span> {/* Display food status */}
+              <span className={`${classes.status} ${order.foodStatus === 'READY FOR PICKUP' ? classes.ready : ''}`}>
+                {order.foodStatus}
+              </span>
             </div>
-            {/* Display button to update food status only if foodStatus is 'READY FOR PICKUP' */}
+
             {order.foodStatus === 'READY FOR PICKUP' && (
               <div className={classes.foodStatusButton}>
                 <button onClick={handleFoodStatusUpdate}>Mark as Picked Up</button>
@@ -70,7 +73,7 @@ export default function OrderTrackPage() {
             )}
 
             {order.paymentId && (
-              <div>
+              <div className={classes.info}>
                 <strong>Payment ID</strong>
                 {order.paymentId}
               </div>
@@ -78,16 +81,17 @@ export default function OrderTrackPage() {
           </div>
 
           <OrderItemsList order={order} />
+
+          {order.status === 'NEW' && (
+            <div className={classes.payment}>
+              <Link to="/payment">Go To Payment</Link>
+            </div>
+          )}
         </div>
 
-        <div>
-          <Title title="Your Location" fontSize="1.6rem" />
-          <Map location={order.addressLatLng} readonly={true} />
-        </div>
-
-        {order.status === 'NEW' && (
-          <div className={classes.payment}>
-            <Link to="/payment">Go To Payment</Link>
+        {order.status === 'DELIVERED' && order.location && (
+          <div className={classes.mapContainer}>
+            <Map location={order.location} />
           </div>
         )}
       </div>

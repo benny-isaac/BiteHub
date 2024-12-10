@@ -523,6 +523,7 @@ export const sample_users = [
     allergies: 'nut, oils',
     dietaryRestrictions: 'vegan, halal',
     address: 'Acity, Accra',
+    points: 18,
     isAdmin: false,
   },
   {
@@ -533,6 +534,7 @@ export const sample_users = [
     allergies: '',
     dietaryRestrictions: '',
     address: 'East Legon Hills, Accra',
+    points: 0,
     isAdmin: true,
   },
 ];

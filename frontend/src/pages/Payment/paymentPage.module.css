@@ -1,37 +1,54 @@
 .container {
   display: flex;
-  margin: 0 2rem 6rem 2rem;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  margin: 0 2rem 6rem 2rem;
 }
 
 .content {
-  width: 35rem;
-  margin: 0 3rem 0 0;
+  width: 100%;
+  max-width: 40rem;
+  margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
-.summary > div {
-  display: flex;
-  margin-top: 0.7rem;
+.totalPriceSection {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.8rem;
+  background-color: #f9f9f9;
 }
 
-.summary span {
-  font-size: 1.2rem;
-}
-.summary h3 {
-  margin: 0 1rem 0 0;
-  flex-basis: 5rem;
+.totalPriceSection h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
 }
 
-.buttons_container {
-  flex-basis: 100%;
+.totalPrice {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #e72929;
+  margin-top: 1rem;
+}
+
+.buttonsContainer {
+  width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .buttons {
-  margin: 2rem;
   width: 35rem;
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.buttons a {
+  text-decoration: none;
 }
