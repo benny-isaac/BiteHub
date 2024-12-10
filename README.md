@@ -42,6 +42,12 @@ This system is designed to improve user experience while simplifying canteen ope
 - **Database:** [Specify your database, e.g., MongoDB, PostgreSQL, etc.]
 - **Others:** [Axios, API, JWT, Bcrypt.js.]
 
+# POSTMAN API DOCUMENTATION
+![Alt text](auth.png)
+![Alt text](orders.png)
+![Alt text](foods.png)
+![Alt text](users.png)
+
 
 ## 1. Demo And Installation
 
