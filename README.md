@@ -1,8 +1,17 @@
 # Canteen Ordering System
 
+# Project Overview
+
 The **Canteen Ordering System** is a responsive web application designed to streamline the 
 process of browsing canteen menus, placing orders, and tracking order statuses in real-time. 
 This platform caters to students and staff, providing a convenient and efficient way to interact with the canteen.
+
+# Deployment Link
+<Render link here>
+
+# Login Details
+Email: testuser@gmail.com
+Password: password123
 
 ## Features
 
