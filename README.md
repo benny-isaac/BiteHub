@@ -46,7 +46,7 @@ This system is designed to improve user experience while simplifying canteen ope
 ![Alt text](auth.png)
 ![Alt text](orders.png)
 ![Alt text](foods.png)
-![Alt text](users.png)
+![Alt text](allusers.png)
 
 
 ## 1. Demo And Installation
