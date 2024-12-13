@@ -7,29 +7,43 @@ import DateTime from '../../components/DateTime/DateTime';
 import OrderItemsList from '../../components/OrderItemsList/OrderItemsList';
 import Title from '../../components/Title/Title';
 import Map from '../../components/Map/Map';
+import StarRating from '../../components/Rating/Rating'; // Reusable StarRating Component
+import Modal from '../../components/Modal/Modal'; // Reusable Modal Component
 
 export default function OrderTrackPage() {
   const { orderId } = useParams();
   const [order, setOrder] = useState();
+  const [isRatingOpen, setIsRatingOpen] = useState(false); // Controls the rating modal
+  const [rating, setRating] = useState(0); // Stores the user's rating
+  const [isThankYouVisible, setIsThankYouVisible] = useState(false); // Controls the thank-you message
   const navigate = useNavigate();
 
   useEffect(() => {
     if (orderId) {
-      trackOrderById(orderId).then(order => {
-        setOrder(order);
-      }).catch(() => {
-        navigate('/orders');
-      });
+      trackOrderById(orderId)
+        .then(order => {
+          setOrder(order);
+        })
+        .catch(() => {
+          navigate('/orders');
+        });
     }
   }, [orderId, navigate]);
 
   const handleFoodStatusUpdate = async () => {
     try {
       const updatedOrder = await updateFoodStatus(order.id, 'PICKED UP');
-      setOrder(updatedOrder);
+      setOrder(updatedOrder); // Immediately update order state with the new food status
+      setIsRatingOpen(true); // Open the rating modal
     } catch (error) {
       console.error('Failed to update food status', error);
     }
+  };
+
+  const handleRatingSubmit = () => {
+    setIsRatingOpen(false); // Close the modal
+    setIsThankYouVisible(true); // Show the thank-you message
+    setTimeout(() => setIsThankYouVisible(false), 3000); // Auto-hide after 3 seconds
   };
 
   if (!orderId) {
@@ -92,6 +106,22 @@ export default function OrderTrackPage() {
         {order.status === 'DELIVERED' && order.location && (
           <div className={classes.mapContainer}>
             <Map location={order.location} />
+          </div>
+        )}
+
+        {/* Rating Modal */}
+        {isRatingOpen && (
+          <Modal onClose={() => setIsRatingOpen(false)}>
+            <h2>Rate Your Food</h2>
+            <StarRating value={rating} onChange={setRating} />
+            <button onClick={handleRatingSubmit}>Submit</button>
+          </Modal>
+        )}
+
+        {/* Thank You Message */}
+        {isThankYouVisible && (
+          <div className={classes.thankYouMessage}>
+            <p>Thank you for your feedback!</p>
           </div>
         )}
       </div>

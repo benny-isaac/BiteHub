@@ -92,3 +92,26 @@
   width: 100%;
   max-width: 45rem;
 }
+
+.thankYouMessage {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: #000;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+}
