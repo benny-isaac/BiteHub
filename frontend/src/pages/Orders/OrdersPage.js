@@ -66,12 +66,10 @@ export default function OrdersPage() {
       {orders &&
         orders.map(order => (
           <div key={order.id} className={classes.order_summary}>
-            <div className={classes.header}>
-              <span>{order.id}</span>
-              <span>
+            <div className={classes.greenText}>
+              <span className={`${classes.price} ${classes.greenText}`}>
                 <DateTime date={order.createdAt} />
               </span>
-              <span>{order.status}</span>
             </div>
             <div className={classes.items}>
               {order.items.map(item => (

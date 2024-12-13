@@ -11,30 +11,33 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { LoadingProvider } from './hooks/useLoading';
 import './interceptors/authInterceptor';
+import { ThemeProvider } from './contexts/ThemeContext'; // Add ThemeProvider
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <LoadingProvider>
-        <AuthProvider>
-          <CartProvider>
-            <App />
-            <ToastContainer
-              position="bottom-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="light"
-            />
-          </CartProvider>
-        </AuthProvider>
-      </LoadingProvider>
+      <ThemeProvider> {/* Wrap with ThemeProvider */}
+        <LoadingProvider>
+          <AuthProvider>
+            <CartProvider>
+              <App />
+              <ToastContainer
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light" // You can use "dark" dynamically later
+              />
+            </CartProvider>
+          </AuthProvider>
+        </LoadingProvider>
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

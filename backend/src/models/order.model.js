@@ -60,7 +60,7 @@ orderSchema.methods.startFoodStatusTimer = function() {
   setTimeout(async () => {
     order.foodStatus = FoodStatus.READY_FOR_PICKUP;
     await order.save();
-  }, 3 * 60 * 1000); // 3 minutes in milliseconds
+  }, 1 * 60 * 1000); // 3 minutes in milliseconds
 };
 
 export const OrderModel = model('order', orderSchema);

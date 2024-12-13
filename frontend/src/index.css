@@ -16,3 +16,25 @@ body {
 a {
   text-decoration: none;
 }
+/* Light Mode Styles */
+body.light {
+  background-color: #fff;
+  color: black;
+}
+
+/* Dark Mode Styles */
+body.dark {
+  background-color: black;
+  color: white;
+}
+
+/* body.dark .header p{
+  color:white;
+} */
+/* Add more specific styles as necessary */
+:root {
+  --background-color: white;
+  --text-color: #333333;
+  --link-color: #3a66b3;
+  --border-color: #dddddd;
+}

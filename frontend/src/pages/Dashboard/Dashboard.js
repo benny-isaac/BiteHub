@@ -33,13 +33,7 @@ export default function Dashboard() {
 }
 
 const allItems = [
-  {
-    title: 'Orders',
-    imageUrl: '/icons/orders.svg',
-    url: '/orders',
-    bgColor: '',
-    color: 'teal',
-  },
+  
   {
     title: 'Profile',
     imageUrl: '/icons/profile.svg',
@@ -60,6 +54,13 @@ const allItems = [
     imageUrl: '/icons/foods.svg',
     url: '/admin/foods',
     forAdmin: true,
+    bgColor: '',
+    color: 'teal',
+  },
+  {
+    title: 'Orders',
+    imageUrl: '/icons/orders.svg',
+    url: '/orders',
     bgColor: '',
     color: 'teal',
   },

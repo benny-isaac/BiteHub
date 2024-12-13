@@ -53,14 +53,14 @@
 .itemName {
   font-weight: 600;
   font-size: 1.2rem;
-  color: #333;
+  color: green;
   text-decoration: none;
   display: block;
   margin-bottom: 0.5rem;
 }
 
 .itemName:hover {
-  color: #e72929;
+  color: green;
 }
 
 .itemQuantity {
@@ -75,6 +75,7 @@
 .itemPrice {
   font-size: 1.2rem;
   font-weight: 600;
+  color: teal;
 }
 
 .itemRemove {

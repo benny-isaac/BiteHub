@@ -4,14 +4,12 @@
   align-items: flex-start; /* Align to top for a more structured layout */
   font-size: 1rem; /* Reduced font size for better fitting */
   padding: 2rem;
-  background-color: #f4f7fa;
 }
 
 .list {
   width: 100%;
   max-width: 80rem;
   padding: 2rem;
-  background-color: white;
   border-radius: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow-x: hidden; /* Ensures no horizontal scroll */
@@ -37,9 +35,6 @@
   font-size: 0.9rem; /* Reduced font size */
 }
 
-.tableRow:hover {
-  background-color: #f9f9f9;
-}
 
 .tableRow > * {
   word-wrap: break-word;

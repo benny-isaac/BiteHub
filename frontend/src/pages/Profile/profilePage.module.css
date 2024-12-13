@@ -4,14 +4,13 @@
   align-items: center;
   height: 100%;
   padding: 2rem;
-  background-color: #f4f7fa;
 }
 
 .details {
   width: 100%;
   max-width: 36rem;
   padding: 2rem;
-  background-color: white;
+  background-color: #121212;
   border-radius: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

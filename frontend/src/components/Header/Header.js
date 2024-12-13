@@ -4,9 +4,8 @@ import { useCart } from '../../hooks/useCart';
 import classes from './header.module.css';
 import { useAuth } from '../../hooks/useAuth';
 
-export default function Header() {
+export default function Header({ toggleTheme, theme }) {
   const { user, logout } = useAuth();
-
   const { cart } = useCart();
 
   return (
@@ -21,14 +20,20 @@ export default function Header() {
               <li className={classes.menu_container}>
                 <Link to="/dashboard">{user.name}</Link>
                 <div className={classes.menu}>
-                  <Link to="/profile">Profile</Link>
-                  <Link to="/orders">Orders</Link>
+                  <Link to="/dashboard">Dashboard</Link>
                   <a onClick={logout}>Logout</a>
                 </div>
               </li>
             ) : (
               <Link to="/login">Login</Link>
             )}
+
+            {/* Theme toggle button */}
+            <div>
+              <a onClick={toggleTheme} className={classes.themeToggle}>
+                 {theme === 'light' ? 'Dark Mode' : 'Light Mode'} 
+              </a>
+            </div>
 
             <li>
               <Link to="/cart">

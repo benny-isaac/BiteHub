@@ -4,13 +4,11 @@
   border: none;
   border-bottom: 0 solid grey;
   transition: border-width 0.15s ease-out;
-  background-color: white;
   font-size: 1.1rem;
   outline: none;
 }
 
 .input::placeholder {
-  color: #dfdfdf;
   font-size: 0.95rem;
 }
 

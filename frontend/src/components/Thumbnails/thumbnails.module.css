@@ -2,7 +2,6 @@
   width: 90%; /* Adjust to 80% or 90% as needed */
   max-width: 1200px; /* Optional: Set a max width for larger screens */
   margin: 0 auto; /* Center the content horizontally */
-  background-color: #ddd;
 }
 
 .list {
