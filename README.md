@@ -1,4 +1,53 @@
-# Lessons:
+# Canteen Ordering System
+
+# Project Overview
+
+The **Canteen Ordering System** is a responsive web application designed to streamline the 
+process of browsing canteen menus, placing orders, and tracking order statuses in real-time. 
+This platform caters to students and staff, providing a convenient and efficient way to interact with the canteen.
+
+# Deployment Link
+Render link here
+
+# Login Details
+### Email: testuser@gmail.com
+### Password: password123
+
+## Features
+
+### 1. User Registration & Profile Management
+- Secure registration and login system.
+- Profiles store user preferences, such as dietary restrictions and allergies.
+
+### 2. Menu Display & Customization
+- Display menu items with detailed information:
+  - Item name, price, category, and nutritional details.
+- Options for customizing orders, such as adding extra toppings.
+
+### 3. Ordering System with Cart
+- Users can:
+  - Add items to a cart.
+  - View order totals.
+  - Adjust and confirm orders before checkout.
+
+### 4. Order Tracking & Loyalty Program
+- Real-time tracking of order status (e.g., Preparing, Ready for Pickup).
+- A loyalty program where users earn points for each order, which can be redeemed for discounts.
+
+This system is designed to improve user experience while simplifying canteen operations.
+
+## Technologies Used
+- **Frontend:** [React, React Router, React Toastify.]
+- **Backend:** [Node.js, Express, Mongoose.]
+- **Database:** [Specify your database, e.g., MongoDB, PostgreSQL, etc.]
+- **Others:** [Axios, API, JWT, Bcrypt.js.]
+
+# POSTMAN API DOCUMENTATION
+![Alt text](auth.png)
+![Alt text](orders.png)
+![Alt text](foods.png)
+![Alt text](allusers.png)
+
 
 ## 1. Demo And Installation
 
