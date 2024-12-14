@@ -20,9 +20,10 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: ['https://bitehub-50rx.onrender.com'],
+    origin: ['https://bitehub-frontend.onrender.com'],  // Correct frontend URL
   })
 );
+
 
 app.use('/api/foods', foodRouter);
 app.use('/api/users', userRouter);
