@@ -7,7 +7,7 @@ process of browsing canteen menus, placing orders, and tracking order statuses i
 This platform caters to students and staff, providing a convenient and efficient way to interact with the canteen.
 
 # Deployment Link
-Render link here
+https://bitehub-frontend.onrender.com/
 
 # Login Details
 ### Email: testuser@gmail.com
