@@ -32,7 +32,7 @@ export default function LoginPage() {
   return (
     <div className={classes.container}>
       <div className={classes.details}>
-        <Title title="LogIn" />
+        <Title title="Login" />
         <form onSubmit={handleSubmit(submit)} noValidate>
           <Input
             type="email"
