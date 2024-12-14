@@ -296,6 +296,7 @@ This system is designed to improve user experience while simplifying canteen ope
     - [x] Add create function
   - [x] Create Auth interceptor
     - [x] Add to index.js
+       
 
 ## 16. Payment Page
 
@@ -324,6 +325,7 @@ This system is designed to improve user experience while simplifying canteen ope
 - [x] Order Router
   - [x] Add ‘track/:id’ api
     - [x] Add to orderService
+- [x] When order is made, food status is set to 'preparing' then set to 'ready for pick up' after 2 minutes.
 
 ## 18.Profile Page
 
