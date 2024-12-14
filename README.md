@@ -1,4 +1,4 @@
-# Canteen Ordering System
+# Canteen Ordering System (BiteHub)
 
 # Project Overview
 
