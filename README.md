@@ -39,7 +39,7 @@ This system is designed to improve user experience while simplifying canteen ope
 ## Technologies Used
 - **Frontend:** [React, React Router, React Toastify.]
 - **Backend:** [Node.js, Express, Mongoose.]
-- **Database:** [Specify your database, e.g., MongoDB, PostgreSQL, etc.]
+- **Database:** [MongoDB, PostgreSQL, etc.]
 - **Others:** [Axios, API, JWT, Bcrypt.js.]
 
 # POSTMAN API DOCUMENTATION
@@ -145,6 +145,7 @@ This system is designed to improve user experience while simplifying canteen ope
   - [x] Add to cart
   - [x] Remove from cart
   - [x] Change quantity
+  - [x] Customize by selecting extra items
   - [x] Saving To LocalStorage
 - [x] In Food Page useCart for Add to cart buttons
 - [x] In Header useCart for cart total count
@@ -278,10 +279,8 @@ This system is designed to improve user experience while simplifying canteen ope
   - [x] Add to Routes
   - [x] Add css
   - [x] Create Order Items List
-  - [x] Create Maps Component
     - [x] Install leaflet & react-leaflet
     - [x] Adding images to public folder
-    - [x] Fixing header menu problem with map
 - [x] Create Order router
 
   - [x] Create auth middleware
@@ -306,8 +305,6 @@ This system is designed to improve user experience while simplifying canteen ope
 - [x] Update Order Router
   - [x] Add newOrderForCurrentUser
   - [x] Add pay api
-- [x] Create PaypalButtons Component
-  - [x] npm install @paypal/react-paypal-js
   - [x] Add clearCart to useCart
   - [x] Get clientId
   - [x] Create Sandbox user for testing
@@ -319,13 +316,11 @@ This system is designed to improve user experience while simplifying canteen ope
   - [x] CSS
   - [x] Create DateTime Component
     - [x] Complete
-  - [x] Map
-    - [x] Fixing Marker Icon Issue
   - [x] Complete
 - [x] Order Router
   - [x] Add ‘track/:id’ api
     - [x] Add to orderService
-- [x] When order is made, food status is set to 'preparing' then set to 'ready for pick up' after 2 minutes.
+- [x] Add Ratings.
 
 ## 18.Profile Page
 
